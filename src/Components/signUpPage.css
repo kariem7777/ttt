@@ -1,0 +1,121 @@
+.Fform {
+    background-color: #fff;
+    color: black;
+    transition: 0.8;
+}
+
+.FformDark {
+    background-color: #0A1929;
+    color: white;
+    transition: 0.8;
+}
+
+.iinput {
+    width: 350px;
+    padding: 12.5px 14px;
+    ;
+    text-align: right;
+    border-radius: 3px;
+    border: 1px solid #C4C4C4;
+
+}
+
+.Finput {
+    background-color: #fff;
+}
+
+.FinputDark {
+    background-color: #0A1929;
+    transition: 0.8;
+
+}
+
+.Fform input:hover {
+    border: 1px solid #000;
+}
+
+.bttn {
+    width: 350px;
+    padding: 8px 5px;
+
+}
+
+.button1Light {
+
+    color: #34A853;
+    background-color: #fff;
+    border: 1px solid #00D285;
+    transition: 0.8;
+}
+
+.button1Light:hover {
+    background-color: #e7e5e5;
+
+}
+
+.button1Dark {
+
+    color: #00D285;
+    background-color: #101014;
+    border: 1px solid #00D285;
+    transition: 0.8;
+
+}
+
+.button1Dark:hover {
+
+    background-color: #1b1b1f;
+
+}
+
+.GoogleImg {
+    width: 25px;
+    height: 25px;
+    ;
+}
+
+.ForgetPassText:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.HDivider {
+    width: 350px;
+    height: 1px;
+    background-color: #E0E0E0;
+}
+
+.DPLeftImage2 {
+    position: absolute;
+    width: 600px;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    top: 0;
+    z-index: -1;
+    transition: 0.8;
+
+}
+
+@media (max-width: 767px) {
+    .FF {
+        margin-top: 49px;
+        height: 90vh;
+        ;
+
+    }
+
+    .DPLeftImage2 {
+
+        width: 100%;
+        /* Adjust the width as needed */
+        height: 90vh;
+    }
+
+}
+
+.SignPost {
+    position: relative;
+    top: -36px
+}

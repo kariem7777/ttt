@@ -1,0 +1,132 @@
+* {
+    font-family: 'Madiana';
+}
+
+.lastNav {
+    gap: 25px;
+}
+
+nav {
+    gap: 15px;
+    direction: rtl;
+}
+
+
+.navLightMode {
+    background-color: #fbfbfb !important;
+    transition: .8s;
+
+
+}
+
+.navDarkMode {
+    background-color: #000000 !important;
+    transition: .8s;
+
+}
+
+.nav-Items-DarkMode a {
+    color: #00D285 !important;
+    transition: .8s;
+
+}
+
+.nav-Items-LightMode a {
+    color: #008E5A !important;
+    transition: .8s;
+
+}
+
+
+
+
+.LogoImg {
+    width: 50px;
+    height: 40px;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+
+
+@media screen and (max-width: 990px) {
+    .lastNav {
+        display: flex;
+        flex-direction: row;
+        /* Change the flex direction to column for small screens */
+        justify-content: end;
+    }
+
+    .icon {
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+/* kariem hovers */
+
+
+.nav-Items-LightMode a:hover {
+    background-color: rgb(0 142 90 / 7%) !important;
+    border-radius: 8%;
+    transition: .5s;
+}
+
+.dark-mode-icon {
+    padding: 5px 10px;
+    color: #00D285;
+
+}
+
+.dark-mode-icon:hover {
+    background-color: rgb(0 210 133 / 15%);
+    padding: 5px 10px;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.iconsize {
+    font-size: 25px;
+}
+
+.light-mode-icon {
+    padding: 5px 10px;
+    color: #008E5A;
+}
+
+.light-mode-icon:hover {
+    background-color: rgb(0 142 90 / 7%);
+    padding: 5px 10px;
+    border-radius: 50%;
+    transition: .4s;
+}
+
+.nav-Items-DarkMode a:hover {
+    background-color: rgb(0 210 133 / 15%) !important;
+    border-radius: 8%;
+    transition: .4s;
+}
+
+.toggler {
+    background-color: inherit;
+    border: 0;
+}
+
+.toggler:focus {
+    outline: 0;
+}
+
+.icon20 {
+    font-size: 20px;
+}
+
+
+
+.navimg {
+    width: 150px;
+}
+
+/* endd */

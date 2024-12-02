@@ -1,0 +1,65 @@
+
+.line-numbers span {
+    display: block;
+}
+
+.code-content {
+    text-wrap: nowrap;
+    position: relative;
+    margin-top: 10px;
+    direction: rtl;
+    flex-grow: 1;
+    text-align: start;
+    z-index: 3;
+}
+.editor {
+    overflow-y: scroll;
+    display: inline-flex;
+    gap: 10px;
+    flex-grow: 1;
+    font-family: monospace;
+    line-height: 21px;
+    background: #050A10;
+    border-radius: 2px;
+    padding: 20px 10px;
+}
+
+.TextAreaCode {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    color: #FFF;
+    resize: none;
+    outline: none;
+    font-family: 'Madiana';
+    font-weight: 300;
+    text-align: right;
+}
+.whiteTextArea{
+    background-color: #FFF;
+  transition: .8s;
+  color: #8F8F8F;
+}
+.DarkTextArea{
+    background-color: #050A10;
+  transition: .8s;
+  color: #8F8F8B;
+}
+
+.line-numbers {
+    width: 20px;
+    min-height: 250px;
+    transition: ease-out .8s;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.line-numbers span {
+  counter-increment: linenumber;
+}
+
+.line-numbers span::before {
+  content: counter(linenumber);
+  display: block;
+  color: #506882;
+}

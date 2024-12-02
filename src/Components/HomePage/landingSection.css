@@ -1,0 +1,72 @@
+.containerLight {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    transition: .8s;
+
+}
+
+.containerDark {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    transition: .8s;
+
+}
+
+.FirstColumn {
+    text-align: right;
+    direction: rtl;
+}
+
+.FirstColumn h1 {
+    font-weight: 500;
+}
+
+.FirstColumn p {
+    font-family: 'Madiana';
+    font-weight: 300 !important;
+}
+
+.FirstSectionText {
+    width: 450px;
+}
+
+.VersionText {
+    color: #0BDBDD;
+}
+
+
+
+@media screen and (max-width: 1085px) {
+    .FirstColumn {
+        width: 100%;
+        /* Make it take up the full width */
+        text-align: center;
+        /* Center the content within the column */
+        margin-top: 20px;
+        /* Add some top margin if needed */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    iframe,
+    .container-fluid,
+    .FirstSectionText {
+        width: 100%;
+    }
+
+
+}
+
+.basil {
+    width: 25px;
+    height: 25px;
+    ;
+}
+
+.padd {
+    padding-bottom: 100px;
+}

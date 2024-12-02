@@ -1,0 +1,85 @@
+.DP {
+    position: relative;
+    margin-top: 49px;
+    height: 93vh;
+}
+
+
+
+.Stext {
+    margin-top: 100px;
+    ;
+}
+
+.DPButton {
+    width: 150px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #008E5A;
+    cursor: pointer;
+    z-index: 4;
+}
+
+.DPButtonWhite {
+    background-color: #008E5A;
+    color: white;
+    transition: .8s;
+}
+
+.DPButtonDark {
+    background-color: #00D285;
+    color: black;
+    transition: .8s;
+}
+
+.DPImg {
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+}
+
+.DPLeftImage {
+    position: absolute;
+    width: 600px;
+    height: 93vh;
+    background-image: url(../Assets/Images/DPimg.png);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    top: 0;
+}
+
+.DPRightBottomImage {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background-position: center;
+    background-size: cover;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.DPImg2 {
+    background-image: url(../Assets/Images/DPImg2.png);
+    transition: .8s;
+}
+
+.DPImg2Dark {
+    background-image: url(../Assets/Images/DPimg2Dark.png);
+
+}
+
+@media (max-width: 767px) {
+    .DPLeftImage {
+
+        width: 100%;
+        /* Adjust the width as needed */
+        bottom: 30%;
+    }
+
+    .DP {
+        margin-top: 49px;
+        ;
+    }
+}
