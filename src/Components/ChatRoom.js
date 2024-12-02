@@ -84,25 +84,48 @@ const ChatRoom = () => {
         setUserId(user.uid);
     });
     return (
-        <div>
-            <h1>assad</h1>
-            <h2>Chat Room: {channelName}</h2>
-            <div>
-                {
-                    messages.map((msg, index) => (
-                        <div key={index}>
-                            <strong>{msg.senderName}:</strong> {msg.text}
-                        </div>
+        // <div>
+        //     <h1>assad</h1>
+        //     <h2>Chat Room: {channelName}</h2>
+        //     <div>
+        //         {
+        //             messages.map((msg, index) => (
+        //                 <div key={index}>
+        //                     <strong>{msg.senderName}:</strong> {msg.text}
+        //                 </div>
 
-                    ))
-                }
+        //             ))
+        //         }
+        //     </div>
+        //     <textarea
+        //         value={newMessage}
+        //         onChange={(e) => setNewMessage(e.target.value)}
+        //         placeholder="Type your message"
+        //     />
+        //     <button onClick={sendMessage}>Send</button>
+        // </div>
+        <div className="container my-4">
+            <h1 className="text-center">Chat Room</h1>
+            <h2 className="text-center mb-4">{channelName}</h2>
+
+            <div className="message-list" style={{ maxHeight: "400px", overflowY: "scroll" }}>
+                {messages.map((msg, index) => (
+                    <div key={index} className={`message-item mb-2 p-2 border rounded ${msg.senderId === userId ? 'bg-info text-white text-right' : ''}`}>
+                        <strong>{msg.senderName}: </strong> <span>{msg.text}</span>
+                    </div>
+                ))}
             </div>
-            <textarea
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                placeholder="Type your message"
-            />
-            <button onClick={sendMessage}>Send</button>
+
+            <div className="d-flex mt-3">
+                <textarea
+                    className="form-control me-2"
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
+                    placeholder="Type your message"
+                    rows="3"
+                />
+                <button className="btn btn-primary" onClick={sendMessage}>Send</button>
+            </div>
         </div>
     );
 };

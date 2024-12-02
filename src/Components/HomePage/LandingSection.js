@@ -198,56 +198,133 @@ const LandingSection = () => {
 
   };
   return (
-    <div className="container-fluid" style={{ marginTop: "49px" }}>
-      <h1>Channels</h1>
+    // <div className="container-fluid" style={{ marginTop: "49px" }}>
+    //   <h1>Channels</h1>
+    //   <div id="channels">
+    //     {channels.map((channel, index) => (
+    //       <div key={index}>
+    //         <h3>{channel.Name}</h3>
+
+    //         {/* Show Subscribe/Unsubscribe button */}
+    //         {isUserSubscribed(channel.subscribers) ? (
+    //           <button onClick={() => handleSubscribe(channel.Name, channel.subscribers)}>
+    //             Unsubscribe from {channel.Name}
+    //           </button>
+    //         ) : (
+    //           <button onClick={() => handleSubscribe(channel.Name, channel.subscribers)}>
+    //             Subscribe to {channel.Name}
+    //           </button>
+    //         )}
+
+    //         {/* Show Go to Chat button if user is subscribed */}
+    //         {isUserSubscribed(channel.subscribers) && (
+    //           <button onClick={() => handleNavigate(channel.Name)}>
+    //             Go to {channel.Name} chat
+    //           </button>
+    //         )}
+
+    //         {/* Show Remove button if the user is the creator of the channel */}
+    //         {channel.Owner === userId && (
+    //           <button onClick={() => handleRemoveChannel(channel.Name)}>
+    //             Remove {channel.Name}
+    //           </button>
+    //         )}
+    //       </div>
+    //     ))}
+    //   </div>
+
+    //   {/* Button to show the form to add a new channel */}
+    //   <button onClick={() => setShowAddChannelForm(!showAddChannelForm)}>
+    //     {showAddChannelForm ? "Cancel" : "Add New Channel"}
+    //   </button>
+
+    //   {/* Form to add a new channel */}
+    //   {showAddChannelForm && (
+    //     <div>
+    //       <input
+    //         type="text"
+    //         value={newChannelName}
+    //         onChange={(e) => setNewChannelName(e.target.value)}
+    //         placeholder="Enter new channel name"
+    //       />
+    //       <button onClick={handleAddChannel}>Create Channel</button>
+    //     </div>
+    //   )}
+    // </div>
+    <div className="container-fluid mt-4">
+      <h4>sd</h4>
+      <h1 className="text-center mb-4 ">Channels</h1>
       <div id="channels">
         {channels.map((channel, index) => (
-          <div key={index}>
-            <h3>{channel.Name}</h3>
+          <div key={index} className="card mb-3 shadow-sm">
+            <div className="card-body">
+              <h3 className="card-title">{channel.Name}</h3>
 
-            {/* Show Subscribe/Unsubscribe button */}
-            {isUserSubscribed(channel.subscribers) ? (
-              <button onClick={() => handleSubscribe(channel.Name, channel.subscribers)}>
-                Unsubscribe from {channel.Name}
-              </button>
-            ) : (
-              <button onClick={() => handleSubscribe(channel.Name, channel.subscribers)}>
-                Subscribe to {channel.Name}
-              </button>
-            )}
+              {/* Show Subscribe/Unsubscribe button */}
+              <div className="d-flex justify-content-start mb-3">
+                {isUserSubscribed(channel.subscribers) ? (
+                  <button className="btn btn-danger me-2 m-2" onClick={() => handleSubscribe(channel.Name, channel.subscribers)}>
+                    Unsubscribe from {channel.Name}
+                  </button>
+                ) : (
+                  <button className="btn btn-primary me-2 m-2" onClick={() => handleSubscribe(channel.Name, channel.subscribers)}>
+                    subscribe to {channel.Name}
+                  </button>
+                )}
 
-            {/* Show Go to Chat button if user is subscribed */}
-            {isUserSubscribed(channel.subscribers) && (
-              <button onClick={() => handleNavigate(channel.Name)}>
-                Go to {channel.Name} chat
-              </button>
-            )}
+                {/* Show Go to Chat button if user is subscribed */}
+                {isUserSubscribed(channel.subscribers) && (
+                  <button
+                    className="btn btn-success"
+                    onClick={() => handleNavigate(channel.Name)}
+                  >
+                    Go to {channel.Name} chat
+                  </button>
+                )}
+              </div>
 
-            {/* Show Remove button if the user is the creator of the channel */}
-            {channel.Owner === userId && (
-              <button onClick={() => handleRemoveChannel(channel.Name)}>
-                Remove {channel.Name}
-              </button>
-            )}
+              {/* Show Remove button if the user is the creator of the channel */}
+              {channel.Owner === userId && (
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={() => handleRemoveChannel(channel.Name)}
+                >
+                  Remove {channel.Name}
+                </button>
+              )}
+            </div>
           </div>
         ))}
       </div>
 
       {/* Button to show the form to add a new channel */}
-      <button onClick={() => setShowAddChannelForm(!showAddChannelForm)}>
-        {showAddChannelForm ? "Cancel" : "Add New Channel"}
-      </button>
+      <div className="text-center mt-4">
+        <button
+          className={`btn ${showAddChannelForm ? 'btn-secondary' : 'btn-primary'}`}
+          onClick={() => setShowAddChannelForm(!showAddChannelForm)}
+        >
+          {showAddChannelForm ? "Cancel" : "Add New Channel"}
+        </button>
+      </div>
 
       {/* Form to add a new channel */}
       {showAddChannelForm && (
-        <div>
-          <input
-            type="text"
-            value={newChannelName}
-            onChange={(e) => setNewChannelName(e.target.value)}
-            placeholder="Enter new channel name"
-          />
-          <button onClick={handleAddChannel}>Create Channel</button>
+        <div className="mt-4 d-flex justify-content-center">
+          <div className="w-50">
+            <input
+              type="text"
+              className="form-control mb-2"
+              value={newChannelName}
+              onChange={(e) => setNewChannelName(e.target.value)}
+              placeholder="Enter new channel name"
+            />
+            <button
+              className="btn btn-success w-100"
+              onClick={handleAddChannel}
+            >
+              Create Channel
+            </button>
+          </div>
         </div>
       )}
     </div>
