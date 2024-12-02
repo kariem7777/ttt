@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getDatabase } from 'firebase/database';  // Import Realtime Database
+import { getMessaging, getToken, onMessage } from 'firebase/messaging';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDowgaGVASFucyMCYvHlKt75DwJM2VqTjg",
@@ -20,4 +21,7 @@ export const provider = new GoogleAuthProvider();
 export const authstate = onAuthStateChanged;
 export const db = getFirestore(app);
 export const realtimeDb = getDatabase(app); // Initialize Realtime Database
+export const messaging = getMessaging(app);
+
+
 

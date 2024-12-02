@@ -6,6 +6,7 @@ import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth"
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import googleIcon from "../a.jpg"
 const SingPage = () => {
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -67,28 +68,28 @@ const SingPage = () => {
   return (
     <div className={`container-fluid DP pl-0  DPWhite `}>
       <section className={`row d-flex flex-column justify-content-center align-items-center `}>
-        <div className='row p-5 pt-2'>
+        <div className='row p-5 pt-2 mt-5'>
           <ToastContainer position='bottom-center' />
-          <h3>تسجيل الدخول</h3>
+          <h3>Login </h3>
         </div>
         <div className='row mb-2 d-flex flex-column '>
-          <input ref={EmailRef} className={`iinput `} placeholder='* البريد الالكتروني' onChange={(e) => { setMail(e.target.value) }} required minLength="7"></input>
-          <p ref={EmailErrorMsg} className=' text-right redText'> من فضلك ادخل بريدك الالكتروني </p>
+          <input ref={EmailRef} className={`iinput `} placeholder='Email ' onChange={(e) => { setMail(e.target.value) }} required minLength="7"></input>
+          <p ref={EmailErrorMsg} className=' text-right redText'> Enter Email </p>
         </div>
         <div className='row mb-5 d-flex flex-column '>
-          <input ref={PasswordRef} type='password' className='iinput' placeholder='* كملة السر' onChange={(e) => { setPassword(e.target.value) }} required></input>
-          <p ref={PasswordErrorMsg} className='  text-right redText'> من فضلك ادخل كملة السر </p>
+          <input ref={PasswordRef} type='password' className='iinput' placeholder='Password' onChange={(e) => { setPassword(e.target.value) }} required></input>
+          <p ref={PasswordErrorMsg} className='  text-right redText'> enter password </p>
         </div>
         <div className='row '>
-          <button onClick={signIn} className={`btn bttn  mb-2 `}>تسجيل دخول </button>
+          <button onClick={signIn} className={`btn bttn  mb-2 `}>Login </button>
         </div>
         <div className='row '>
-          <button onClick={signInGoogle} className={`btn bttn mb-2`}>تسجيل الدخول <img className='GoogleImg' /></button>
+          <button onClick={signInGoogle} className={`btn bttn mb-2`}> log in <img className='GoogleImg' src={googleIcon} /></button>
         </div>
 
         <div className='row '>
-          <p className=' mb-2 mt-3'>ليس  لديك حساب  ؟
-            <NavLink to={'/SignUp'} >    انشاء حساب  </NavLink>
+          <p className=' mb-2 mt-3'>Don't have an Account
+            <NavLink to={'/SignUp'} >    Register  </NavLink>
           </p>
         </div>
       </section>

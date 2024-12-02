@@ -63,67 +63,22 @@ const Navbar = ({ Authenticated, setAuth }) => {
                 <NavLink to={"/"}>
                 </NavLink>
                 {
-                    Authenticated === null ?
-                        (
-                            <>
-                                <ul className={` navbar-nav ml-auto  p-0 alignRight`} >
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link" to={"/Examples"}>أمثلة توضيحية</NavLink>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link" to={"/Gallarey"}>بنية باستخدام (عرب)</NavLink>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <a className="nav-link " href="#">مرجع (عرب)</a>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link " to={"/AboutArab"}>عن عرب</NavLink>
-                                    </li>
-                                </ul>
-                            </>
-                        )
-                        :
-                        (
-                            <>
-                                <ul className={` navbar-nav ml-auto  p-0 alignRight`} >
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link" to={"/Development"}>منصة التطوير </NavLink>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link" to={"/Examples"}>أمثلة توضيحية</NavLink>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link" to={"/Gallarey"}>بنية باستخدام (عرب)</NavLink>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <a className="nav-link " href="#">مرجع (عرب)</a>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link " to={"/Exercises"}>التمارين</NavLink>
-                                    </li>
-                                    <li className="nav-item active ml-3">
-                                        <NavLink className="nav-link " to={"/AboutArab"}>عن عرب</NavLink>
-                                    </li>
-                                </ul>
-                            </>
-                        )
+
                 }
             </div>
             <div className='d-none d-lg-block'>
                 <ul className={` navbar-nav lastNav mt-2`}>
-                    <li className={`nav-item my-auto  icon`}>
-                        <FontAwesomeIcon icon={faSun} className="iconsize" />
-                    </li>
+
                     {
                         Authenticated === null ?
                             (
                                 <>
                                     <li className="nav-item active">
-                                        <NavLink className="nav-link" to={'/SignIn'}>تسجيل الدخول</NavLink>
+                                        <NavLink className="nav-link" to={'/SignIn'}> Login</NavLink>
                                     </li>
                                     <li className="nav-item ">
                                         <NavLink to={"\SignUp"}>
-                                            <button className={` btn`}>انشاء حساب</button>
+                                            <button className={` btn`}>Register </button>
                                         </NavLink>
                                     </li>
                                 </>
@@ -131,7 +86,7 @@ const Navbar = ({ Authenticated, setAuth }) => {
                             :
                             (
                                 <li className="nav-item ">
-                                    <button onClick={SignOut} className={` btn`}> تسجيل خروج</button>
+                                    <button onClick={SignOut} className={` btn`}> Log out </button>
                                 </li>
                             )
                     }

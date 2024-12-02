@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { collection, deleteDoc, setDoc, getDocs, updateDoc, doc, arrayUnion, arrayRemove, addDoc } from "firebase/firestore";
-import { auth, db, realtimeDb } from '../../config/firebase'; // Import auth and db from your config
+import { auth, db, realtimeDb, messaging } from '../../config/firebase'; // Import auth and db from your config
 import { useNavigate } from 'react-router-dom'; // Assuming you're using react-router for navigation
 import './landingSection.css';
 import { getDatabase, ref, set } from "firebase/database";  // Make sure this import is included
+import { getToken, onMessage } from 'firebase/messaging';
 
 const LandingSection = () => {
   const [channels, setChannels] = useState([]);
@@ -40,22 +41,55 @@ const LandingSection = () => {
       const userData = { Name: user.displayName || "User", ID: user.uid };
 
       const channelRef = doc(db, "Channels", ChannelName);
-
+      const token = localStorage.getItem('fcmToken');
       if (isUserSubscribed(subscribers)) {
         // Unsubscribe user if already subscribed
         await updateDoc(channelRef, {
           subscribers: arrayRemove(userData)
         });
+
+        const token = localStorage.getItem('fcmToken');
+        if (token) {
+          fetch('https://asdas-rust.vercel.app/unsubscribe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ token, topic: ChannelName }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Unsubscribed from topic:', ChannelName);
+            })
+            .catch((error) => console.error('Error unsubscribing from topic:', error));
+        }
+
       } else {
         // Subscribe user if not already subscribed
         await updateDoc(channelRef, {
           subscribers: arrayUnion(userData)
         });
+        if (token) {
+          fetch('https://asdas-rust.vercel.app/subscribe', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ token, topic: ChannelName }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('Subscribed to topic:', ChannelName);
+
+            })
+            .catch((error) => console.error('Error subscribing to topic:', error));
+        }
       }
 
       // Fetch the updated channels
       const updatedChannels = await getAllDocuments("Channels");
       setChannels(updatedChannels);
+
     }
   };
 
@@ -90,6 +124,39 @@ const LandingSection = () => {
       if (user) {
         setUserId(user.uid);
         setUserName(user.displayName || "User");
+        const requestPermission = async () => {
+          try {
+            const permission = await Notification.requestPermission();
+            if (permission === 'granted') {
+              const token = await getToken(messaging, { vapidKey: 'BF6xqONa9eWPAP4JHGn5XhdJnTszRR5Rm92wIvWfOPscizHj-2Ub2qgtOHetFNkcgUBsLiDpqa5kqJliQUgeSCA' });
+              console.log('FCM Token:', token);
+              // Save the token to your backend/database here
+              localStorage.setItem('fcmToken', token);
+            } else {
+              console.log('Permission denied');
+            }
+          } catch (error) {
+            console.error('Error getting permission:', error);
+          }
+        };
+
+        requestPermission();
+
+        onMessage(messaging, (payload) => {
+          console.log('Message received. ', payload);
+
+          // Show notification when the app is in the foreground
+          const notificationTitle = 'Foreground Title';
+          const notificationOptions = {
+            body: payload.notification.body,
+            icon: payload.notification.icon || '/default-icon.png',
+          };
+
+          // Ensure Notification is supported
+          if (Notification.permission === 'granted') {
+            new Notification(notificationTitle, notificationOptions);
+          }
+        });
       } else {
         setUserId(null);
         setUserName("");
@@ -128,6 +195,7 @@ const LandingSection = () => {
     // Fetch the updated channels after removal
     const updatedChannels = await getAllDocuments("Channels");
     setChannels(updatedChannels);
+
   };
   return (
     <div className="container-fluid" style={{ marginTop: "49px" }}>

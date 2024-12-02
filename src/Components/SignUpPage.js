@@ -7,6 +7,7 @@ import { auth, provider, db } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import googleIcon from "../a.jpg"
 
 const SingPage = () => {
   const [email, setMail] = useState('');
@@ -81,6 +82,7 @@ const SingPage = () => {
   const signInGoogle = async () => {
     try {
       let credintial = await signInWithPopup(auth, provider);
+      await updateProfile(credintial.user, { displayName });
       await setDoc(doc(db, "Users", credintial.user.uid), {
         channels: [],
         Email: email,
@@ -95,9 +97,9 @@ const SingPage = () => {
   return (
     <div className={`container-fluid DP pl-0 DPWhite`}>
       <section className={`row d-flex flex-column justify-content-center align-items-center `}>
-        <div className='row p-5 pt-2'>
+        <div className='row p-5 pt-4 mt-5'>
           <ToastContainer position='bottom-center' />
-          <h3>انشاء حساب</h3>
+          <h3>create Account </h3>
         </div>
         <div className='row mb-2'>
           <input
@@ -111,7 +113,7 @@ const SingPage = () => {
           <input
             ref={EmailRef}
             className={`iinput `}
-            placeholder='* البريد الالكتروني'
+            placeholder='Email'
             onChange={(e) => setMail(e.target.value)}
           ></input>
         </div>
@@ -120,7 +122,7 @@ const SingPage = () => {
             ref={PasswordRef}
             type='password'
             className='iinput'
-            placeholder='* كملة السر'
+            placeholder='password'
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
@@ -129,7 +131,7 @@ const SingPage = () => {
             ref={ConfirmationPasswordRef}
             className='iinput'
             type='password'
-            placeholder='* تأكيد كملة السر'
+            placeholder='confirm password'
             onChange={(e) => setConfirmationPassword(e.target.value)}
           ></input>
         </div>
@@ -138,7 +140,7 @@ const SingPage = () => {
             onClick={validateAndSignUp}
             className={`btn bttn  mb-2`}
           >
-            انشاء حساب جديد
+            Create New Account
           </button>
         </div>
         <div className='row'>
@@ -146,14 +148,14 @@ const SingPage = () => {
             onClick={signInGoogle}
             className={`btn bttn mb-2`}
           >
-            تسجيل الدخول <img className='GoogleImg' alt="Google Icon" />
+            Login<img className='GoogleImg' src={googleIcon} alt="Google Icon" />
           </button>
         </div>
         <div className='row'>
           <p className='mb-2 mt-3'>
-            هل لديك حساب ؟
+            Do you have an Account
             <NavLink to={'/SignIn'} >
-              تسجيل الدخول{' '}
+              Login{' '}
             </NavLink>
           </p>
         </div>
